@@ -3,6 +3,9 @@ import numpy as np
 from PIL import Image
 
 IMAGE_SHAPE = 512
+config = tf.compat.v1.ConfigProto()
+config.gpu_options.allow_growth = True
+session = tf.compat.v1.Session(config=config)
 
 
 def load_image(image_file):
