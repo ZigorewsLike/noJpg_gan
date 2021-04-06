@@ -1,0 +1,6 @@
+*.jpg
+*.png
+*.h5
+venv
+.idea
+__pycache__
