@@ -36,7 +36,7 @@ def image_prepare(img_path):
     image = image.resize(image_calc_size(image.size[0], image.size[1], False))
     w, h = image.size
     image = image_extension(image)
-    image.save('data/input.jpg')
+    image.save('local/input.jpg')
     return w, h
 
 
@@ -49,6 +49,6 @@ if __name__ == '__main__':
     prediction = model(load_image('local/input.jpg'), training=True)
     n_predict = ((prediction.numpy()[0] + 1) * 127.5).astype(np.uint8)
     img = Image.fromarray(n_predict)
-    img.crop(((IMAGE_SHAPE - width) / 2, (IMAGE_SHAPE - height) / 2,
-              (IMAGE_SHAPE - width) / 2 + width, (IMAGE_SHAPE - height) / 2 + height))
+    img = img.crop(((IMAGE_SHAPE - width) / 2, (IMAGE_SHAPE - height) / 2,
+                    (IMAGE_SHAPE - width) / 2 + width, (IMAGE_SHAPE - height) / 2 + height))
     img.save(output_image, quality=100)
