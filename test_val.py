@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image
 
 IMAGE_SHAPE = 512
-input_image, output_image = input_test_val(sys.argv[1:])
+input_image, output_image, model_dir = input_test_val(sys.argv[1:])
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 session = tf.compat.v1.Session(config=config)
@@ -45,7 +45,7 @@ if __name__ == '__main__':
         if not os.path.exists(path_dir):
             os.mkdir(path_dir)
     width, height = image_prepare(input_image)
-    model = tf.keras.models.load_model('model/g512m.h5', compile=False)
+    model = tf.keras.models.load_model(model_dir, compile=False)
     prediction = model(load_image('local/input.jpg'), training=True)
     n_predict = ((prediction.numpy()[0] + 1) * 127.5).astype(np.uint8)
     img = Image.fromarray(n_predict)

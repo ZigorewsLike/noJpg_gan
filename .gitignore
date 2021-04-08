@@ -1,8 +1,9 @@
-*.jpg
+data/*.jpg
+local
 *.png
 *.psd
 *.h5
 venv
 .idea
 __pycache__
-logs/
+logs

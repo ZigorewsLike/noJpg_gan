@@ -4,8 +4,6 @@ from shutil import copy
 import random
 import sys
 from input_args import input_collect
-
-input_dir, output_dir, test_part = input_collect(sys.argv[1:])
 c = 0
 c_tr = 1
 c_ts = 1
@@ -31,6 +29,7 @@ def image_crop(image):
 
 
 if __name__ == '__main__':
+    input_dir, output_dir, test_part = input_collect(sys.argv[1:])
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
     for folder in ['data', 'train', 'val']:

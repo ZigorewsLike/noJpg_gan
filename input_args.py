@@ -5,20 +5,23 @@ import sys
 def input_test_val(ar):
     output_image = ''
     input_image = ''
+    model_dir = ''
     try:
-        opts, args = getopt.getopt(ar, "hi:o:", ["input_image=", "output_image="])
+        opts, args = getopt.getopt(ar, "hi:o:m:", ["input_image=", "output_image=", "model_dir"])
     except getopt.GetoptError:
-        print('test_val.py -i <input_image> -o <output_image>')
+        print('test_val.py -i <input_image> -o <output_image> -m <model_dir>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('test_val.py -i <input_image> -o <output_image>')
+            print('test_val.py -i <input_image> -o <output_image> -m <model_dir>')
             sys.exit()
         elif opt in ('-o', '--output_image'):
             output_image = arg
         elif opt in ('-i', '--input_image'):
             input_image = arg
-    return input_image, output_image
+        elif opt in ('-m', '--model_dir'):
+            model_dir = arg
+    return input_image, output_image, model_dir
 
 
 def input_collect(ar):
